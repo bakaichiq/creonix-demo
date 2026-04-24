@@ -44,7 +44,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isGrocery && "border-emerald-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,253,244,0.92))]",
     isSewing && "border-fuchsia-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(253,242,248,0.94))]",
     isBakery && "border-amber-100 bg-[linear-gradient(180deg,rgba(255,251,235,0.98),rgba(255,255,255,0.92))]",
-    isRestaurant && "border-rose-900/40 bg-[linear-gradient(180deg,rgba(15,23,42,0.92),rgba(30,41,59,0.92))] text-white shadow-[0_24px_80px_-40px_rgba(136,19,55,0.45)]"
+    isRestaurant && "border-orange-900/35 bg-[linear-gradient(180deg,rgba(24,24,27,0.94),rgba(41,37,36,0.94))] text-white shadow-[0_24px_80px_-40px_rgba(120,53,15,0.38)]"
   );
   const boutiquePanelClass = cn(
     "rounded-[22px] border border-slate-200 p-4",
@@ -52,7 +52,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isGrocery && "border-emerald-100 bg-emerald-50/70",
     isSewing && "border-fuchsia-100 bg-fuchsia-50/70",
     isBakery && "border-amber-100 bg-amber-50/70",
-    isRestaurant && "border-orange-100 bg-orange-50/70"
+    isRestaurant && "border-orange-900/30 bg-orange-950/30"
   );
   const boutiqueMutedPanelClass = cn(
     "rounded-[24px] border border-slate-200 bg-slate-50 p-5",
@@ -60,7 +60,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isGrocery && "border-emerald-100 bg-emerald-50/70",
     isSewing && "border-fuchsia-100 bg-fuchsia-50/70",
     isBakery && "border-amber-100 bg-amber-50/70",
-    isRestaurant && "border-orange-100 bg-orange-50/70"
+    isRestaurant && "border-orange-900/30 bg-orange-950/30"
   );
   const boutiqueBadgeClass = cn(
     "w-fit rounded-full",
@@ -68,7 +68,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isGrocery ? "bg-emerald-600 text-white" :
     isSewing ? "bg-fuchsia-700 text-white" :
     isBakery ? "bg-amber-700 text-white" :
-    isRestaurant ? "bg-orange-700 text-white" :
+    isRestaurant ? "bg-orange-600 text-white" :
     "bg-slate-950 text-white"
   );
   const boutiqueTitleClass = cn(
@@ -78,18 +78,18 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isBakery && "font-semibold text-amber-950",
     isRestaurant && "text-white"
   );
-  const serviceLabelClass = cn(isDarkGlass ? "text-slate-400" : isBoutique ? "text-stone-400" : "text-slate-400");
+  const serviceLabelClass = cn(isDarkGlass ? "text-orange-100/55" : isBoutique ? "text-stone-400" : "text-slate-400");
   const serviceHeadingClass = cn(isDarkGlass ? "text-white" : isBoutique ? "font-light tracking-[0.04em]" : "font-semibold", !isDarkGlass && "text-slate-950");
   const serviceBodyClass = cn(isDarkGlass ? "text-slate-300" : isBoutique ? "text-stone-600" : "text-slate-600");
   const servicePanelClass = cn(
     isDarkGlass
-      ? "rounded-[18px] border border-white/10 bg-white/5 px-4 py-3 text-sm leading-6 text-slate-200"
+      ? "rounded-[18px] border border-orange-200/10 bg-black/16 px-4 py-3 text-sm leading-6 text-stone-100"
       : isBoutique
         ? "rounded-[6px] border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-7 text-stone-600"
         : "rounded-[18px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600"
   );
   const serviceStatsCardClass = cn(
-    isDarkGlass ? "rounded-[18px] border border-white/10 bg-white/5 p-4" :
+    isDarkGlass ? "rounded-[18px] border border-orange-200/10 bg-black/16 p-4" :
     isBoutique ? "rounded-[6px] border border-stone-200 bg-white px-5 py-4" :
     "rounded-[20px] border border-slate-200 bg-slate-50 p-4"
   );

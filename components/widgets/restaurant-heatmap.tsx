@@ -15,11 +15,11 @@ const matrix = [
 ];
 
 function getHeatColor(value: number) {
-  if (value >= 90) return { bg: "bg-red-500", text: "text-white" };
-  if (value >= 70) return { bg: "bg-orange-400", text: "text-white" };
-  if (value >= 50) return { bg: "bg-amber-300", text: "text-slate-900" };
-  if (value >= 30) return { bg: "bg-yellow-100", text: "text-slate-700" };
-  return { bg: "bg-slate-100", text: "text-slate-400" };
+  if (value >= 90) return { bg: "bg-orange-600", text: "text-white" };
+  if (value >= 70) return { bg: "bg-amber-500", text: "text-stone-950" };
+  if (value >= 50) return { bg: "bg-amber-200", text: "text-stone-900" };
+  if (value >= 30) return { bg: "bg-stone-100", text: "text-stone-700" };
+  return { bg: "bg-slate-100", text: "text-slate-500" };
 }
 
 export function RestaurantHeatmap() {
@@ -41,30 +41,30 @@ export function RestaurantHeatmap() {
     <div>
       <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
         <div>
-          <p className="text-sm font-semibold text-slate-700">Загрузка кухни по станциям и времени</p>
-          <p className="mt-1 text-xs text-slate-500">Пиковые окна читаются сразу, без отдельного отчета.</p>
+          <p className="text-sm font-semibold text-stone-700">Загрузка кухни по станциям и времени</p>
+          <p className="mt-1 text-xs text-stone-500">Пиковые окна читаются сразу, без отдельного отчета.</p>
         </div>
-        <div className="flex items-center gap-2 text-[10px] text-slate-400">
+        <div className="flex items-center gap-2 text-[10px] text-stone-400">
           <span className="flex h-3 w-3 rounded bg-slate-100 border border-slate-200" />
           <span>0%</span>
-          <span className="flex h-3 w-5 rounded bg-gradient-to-r from-yellow-200 via-orange-400 to-red-500" />
+          <span className="flex h-3 w-5 rounded bg-gradient-to-r from-stone-200 via-amber-400 to-orange-600" />
           <span>100%</span>
         </div>
       </div>
 
       {/* Peak summary */}
       <div className="mb-3 flex flex-wrap gap-2">
-        <div className="flex items-center gap-1.5 rounded-full bg-red-50 px-2.5 py-1 text-[11px] font-medium text-red-600">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+        <div className="flex items-center gap-1.5 rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-medium text-orange-700">
+          <span className="h-1.5 w-1.5 rounded-full bg-orange-600" />
           Пик: {peakTime}
         </div>
-        <div className="flex items-center gap-1.5 rounded-full bg-slate-50 px-2.5 py-1 text-[11px] text-slate-500">
+        <div className="flex items-center gap-1.5 rounded-full bg-stone-50 px-2.5 py-1 text-[11px] text-stone-500">
           Макс. загрузка: {Math.max(...matrix.flat())}%
         </div>
       </div>
 
       {/* Mobile scroll hint */}
-      <div className="mb-1 block text-[10px] text-slate-400 sm:hidden">← прокрутите вправо</div>
+      <div className="mb-1 block text-[10px] text-stone-400 sm:hidden">← прокрутите вправо</div>
 
       <div className="overflow-x-auto">
         <div className="min-w-[380px]">
@@ -75,12 +75,12 @@ export function RestaurantHeatmap() {
               <div
                 key={t}
                 className={`text-center text-[10px] font-semibold transition-colors ${
-                  hoveredCol === ti ? "text-rose-600" : "text-slate-400"
+                  hoveredCol === ti ? "text-orange-700" : "text-stone-400"
                 }`}
               >
                 {t}
                 {slotAvg[ti] >= 70 && (
-                  <span className="ml-0.5 text-[8px] text-orange-500">▲</span>
+                    <span className="ml-0.5 text-[8px] text-amber-600">▲</span>
                 )}
               </div>
             ))}
@@ -91,16 +91,16 @@ export function RestaurantHeatmap() {
               <div
                 key={station}
                 className={`grid grid-cols-[110px,repeat(5,1fr)] gap-1.5 rounded-xl transition-colors ${
-                  hoveredRow === si ? "bg-rose-50/50" : ""
+                  hoveredRow === si ? "bg-orange-50/50" : ""
                 }`}
                 onMouseEnter={() => setHoveredRow(si)}
                 onMouseLeave={() => setHoveredRow(null)}
               >
                 <div className="flex items-center gap-1">
                   {peakSlot[si] === hoveredCol && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-400 shrink-0" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-orange-500 shrink-0" />
                   )}
-                  <span className="text-[11px] font-medium text-slate-600 leading-tight">{station}</span>
+                  <span className="text-[11px] font-medium text-stone-700 leading-tight">{station}</span>
                 </div>
                 {matrix[si].map((val, ti) => {
                   const { bg, text } = getHeatColor(val);
@@ -132,7 +132,7 @@ export function RestaurantHeatmap() {
                 <div
                   key={ti}
                   className={`text-center text-[11px] font-bold transition-colors ${
-                    hoveredCol === ti ? "text-rose-600" : avg >= 70 ? "text-orange-500" : "text-slate-500"
+                    hoveredCol === ti ? "text-orange-700" : avg >= 70 ? "text-amber-600" : "text-stone-500"
                   }`}
                 >
                   {avg}%
@@ -143,7 +143,7 @@ export function RestaurantHeatmap() {
         </div>
       </div>
 
-      <p className="mt-2 text-right text-[10px] text-slate-400">Данные за сегодня · обновлено 10 мин назад</p>
+      <p className="mt-2 text-right text-[10px] text-stone-400">Данные за сегодня · обновлено 10 мин назад</p>
     </div>
   );
 }

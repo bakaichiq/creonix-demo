@@ -28,6 +28,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
   const isRestaurant = business.slug === "restaurant";
   const isManufacturing = business.slug === "manufacturing";
   const isDistribution = business.slug === "distribution";
+  const isDarkCard = isLogistics || isManufacturing;
 
   return (
     <motion.div
@@ -49,7 +50,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
                   : isSewing
                     ? "group relative h-full overflow-hidden rounded-[26px] border-fuchsia-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(253,242,248,0.94))] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_rgba(217,70,239,0.18)]"
                     : isAgro
-                      ? "group relative h-full overflow-hidden rounded-[20px] border-emerald-900/20 bg-[linear-gradient(145deg,#052e16,#0f172a)] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_-30px_rgba(34,197,94,0.24)]"
+                      ? "group relative h-full overflow-hidden rounded-[20px] border-emerald-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,253,244,0.94))] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_rgba(34,197,94,0.18)]"
                       : isBakery
                         ? "group relative h-full overflow-hidden rounded-[24px] border-amber-100 bg-[linear-gradient(180deg,rgba(255,251,235,0.98),rgba(255,247,237,0.94))] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_80px_-24px_rgba(245,158,11,0.18)]"
                         : isRestaurant
@@ -83,7 +84,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
               business.palette.badge,
               isLogistics && "bg-cyan-500/10 text-cyan-200",
               isBoutique && "rounded-[6px] bg-stone-100 text-stone-700",
-              isAgro && "bg-emerald-500/10 text-emerald-200",
+              isAgro && "bg-emerald-100 text-emerald-700",
               isManufacturing && "bg-sky-500/10 text-sky-200",
               isDistribution && "bg-indigo-100 text-indigo-700"
             )}>
@@ -96,7 +97,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
               "break-anywhere font-display text-2xl transition-colors",
               isBoutique ? "font-light tracking-[0.06em] text-stone-900 group-hover:text-stone-700" :
               isLogistics ? "font-semibold text-white group-hover:text-cyan-100" :
-              isAgro ? "font-semibold text-white group-hover:text-emerald-100" :
+              isAgro ? "font-semibold text-emerald-950 group-hover:text-emerald-800" :
               isManufacturing ? "font-semibold uppercase tracking-[0.04em] text-white group-hover:text-sky-100" :
               isSewing ? "italic text-fuchsia-950 group-hover:text-fuchsia-800" :
               isBakery ? "font-semibold text-amber-950 group-hover:text-amber-800" :
@@ -106,11 +107,11 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
             )}>
               {business.name}
             </h3>
-            <p className={cn("break-anywhere text-sm leading-6", isLogistics || isAgro || isManufacturing ? "text-slate-300" : "text-slate-600")}>{business.description}</p>
+            <p className={cn("break-anywhere text-sm leading-6", isDarkCard ? "text-slate-300" : isAgro ? "text-slate-600" : "text-slate-600")}>{business.description}</p>
           </div>
 
           <div className="space-y-3">
-            <div className={cn("text-xs uppercase tracking-[0.16em]", isBoutique ? "font-medium text-stone-400" : isLogistics || isAgro || isManufacturing ? "font-medium text-slate-500" : "font-semibold text-slate-400")}>
+            <div className={cn("text-xs uppercase tracking-[0.16em]", isBoutique ? "font-medium text-stone-400" : isDarkCard ? "font-medium text-slate-500" : isAgro ? "font-semibold text-emerald-700" : "font-semibold text-slate-400")}>
               Боли бизнеса
             </div>
             <div className="flex flex-wrap gap-2">
@@ -123,7 +124,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
                     isConstruction && "rounded-sm bg-slate-50",
                     isBoutique && "rounded-[6px] border-stone-200 bg-white",
                     isLogistics && "rounded-full border-slate-700 bg-slate-900 text-slate-300",
-                    isAgro && "rounded-full border-emerald-900/30 bg-emerald-950/30 text-emerald-100",
+                    isAgro && "rounded-full border-emerald-200 bg-emerald-50 text-emerald-800",
                     isManufacturing && "rounded-none border-sky-900/30 bg-slate-900 text-sky-100",
                     isGrocery && "border-emerald-100 bg-white",
                     isSewing && "border-fuchsia-100 bg-white",
@@ -141,8 +142,8 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
           <div className="mt-auto space-y-3">
             <div className="grid gap-2">
               {business.outcomes.slice(0, 2).map((item) => (
-                <div key={item} className={cn("flex items-center gap-2 text-sm", isLogistics || isAgro || isManufacturing ? "text-slate-300" : "text-slate-600")}>
-                  <CheckCircle2 className={cn("h-4 w-4 shrink-0", isLogistics ? "text-cyan-400" : isAgro ? "text-emerald-400" : isManufacturing ? "text-sky-400" : "text-emerald-500")} />
+                <div key={item} className={cn("flex items-center gap-2 text-sm", isDarkCard ? "text-slate-300" : isAgro ? "text-slate-700" : "text-slate-600")}>
+                  <CheckCircle2 className={cn("h-4 w-4 shrink-0", isLogistics ? "text-cyan-400" : isAgro ? "text-emerald-600" : isManufacturing ? "text-sky-400" : "text-emerald-500")} />
                   <span className="break-anywhere">{item}</span>
                 </div>
               ))}
@@ -156,7 +157,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
                 isConstruction && "rounded-sm group-hover:bg-slate-100",
                 isBoutique && "rounded-[8px] bg-stone-950 text-white hover:bg-stone-800",
                 isLogistics && "rounded-[14px] border border-slate-700 bg-slate-900 text-white hover:bg-slate-800",
-                isAgro && "rounded-[14px] border border-emerald-900/30 bg-emerald-950/40 text-white hover:bg-emerald-950/60",
+                isAgro && "rounded-[14px] border border-emerald-200 bg-emerald-700 text-white hover:bg-emerald-800",
                 isManufacturing && "rounded-none border border-sky-900/30 bg-slate-900 text-white hover:bg-slate-800",
                 isDistribution && "rounded-[14px] bg-indigo-950 text-white hover:bg-indigo-900",
                 !isConstruction && !isBoutique && !isLogistics && !isAgro && !isManufacturing && !isDistribution && "rounded-2xl group-hover:bg-slate-100"

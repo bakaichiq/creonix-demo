@@ -633,20 +633,22 @@ export default function HomePage() {
               <ul className="space-y-3 text-sm text-slate-600">
                 <li>
                   <a
-                    href="tel:+79001234567"
+                    href="tel:+996770119908"
                     className="flex items-center gap-2 transition hover:text-slate-950"
                   >
                     <Phone className="h-4 w-4 text-slate-400" />
-                    +7 900 123-45-67
+                    +996 770 11 99 08
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:demo@creonix.ru"
+                    href="https://instagram.com/creonix.kg"
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex items-center gap-2 transition hover:text-slate-950"
                   >
                     <Mail className="h-4 w-4 text-slate-400" />
-                    demo@creonix.ru
+                    @creonix.kg
                   </a>
                 </li>
                 <li>

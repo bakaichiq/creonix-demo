@@ -9,8 +9,8 @@ export function LiveSimulation({ slug, business }: { slug: BusinessSlug, busines
   const triggerEvent = useCallback(() => {
     // Генерация случайных сумм и времени для живости
     const randomAmount = Math.floor(Math.random() * 500) + 50;
-    const isKzt = Math.random() > 0.5;
-    const valueStr = isKzt ? `${randomAmount * 1000} ₸` : `${randomAmount} шт.`;
+    const currency = business.currency || "сом";
+    const valueStr = `${(randomAmount * 1000).toLocaleString("ru-RU")} ${currency}`;
 
     const events = [
       {
@@ -43,7 +43,7 @@ export function LiveSimulation({ slug, business }: { slug: BusinessSlug, busines
       duration: 5000,
       className: "border border-white/10 bg-slate-900/90 text-white backdrop-blur-xl shadow-2xl rounded-2xl",
     });
-  }, [business.vocabulary]);
+  }, [business.currency, business.vocabulary]);
 
   useEffect(() => {
     // Ждем 10 секунд перед первым уведомлением, затем повторяем каждые 20 сек

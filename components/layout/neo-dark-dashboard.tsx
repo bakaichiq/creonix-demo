@@ -73,7 +73,7 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
                   {business.design.designSystemName} // В СЕТИ
                 </div>
                 <h2 className={cn("mt-2 font-display text-3xl text-white sm:text-4xl", business.design.headingClass)}>{business.name}</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
                   {isAgro
                     ? "Темная тема для агро стала field-operations console: сезон, поля, техника и прогноз поданы как спокойный ночной мониторинг."
                     : isManufacturing
@@ -89,9 +89,9 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
                 { label: "РИСК", value: `${criticalRisks}` },
                 { label: "ИИ", value: "ОНЛАЙН" }
               ].map((item) => (
-                <div key={item.label} className="border border-slate-800 bg-slate-950/70 px-4 py-4">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">{item.label}</div>
-                  <div className="mt-2 text-lg font-semibold text-cyan-100">{item.value}</div>
+                <div key={item.label} className="border border-slate-700 bg-slate-950/80 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">{item.label}</div>
+                  <div className="mt-2 text-lg font-semibold text-white">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -101,16 +101,16 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
         <Card variant="dark" className="border border-slate-800 bg-slate-900/90 p-0 text-slate-200 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
           <CardContent className="space-y-4 p-5">
             <div>
-              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-500/70">ГОРИЗОНТ</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-400/80">ГОРИЗОНТ</div>
               <div className="mt-2 text-lg font-medium text-white">Управленческий горизонт</div>
             </div>
 
             <Tabs value={timeframe} onValueChange={(v) => setTimeframe(v as Timeframe)} className="w-full">
-              <TabsList className="grid w-full grid-cols-4 border border-slate-800 bg-slate-950 p-1">
-                <TabsTrigger value="today" className="rounded-none font-mono text-xs uppercase tracking-wider data-[state=active]:bg-cyan-900/40 data-[state=active]:text-cyan-400">1D</TabsTrigger>
-                <TabsTrigger value="week" className="rounded-none font-mono text-xs uppercase tracking-wider data-[state=active]:bg-cyan-900/40 data-[state=active]:text-cyan-400">7D</TabsTrigger>
-                <TabsTrigger value="month" className="rounded-none font-mono text-xs uppercase tracking-wider data-[state=active]:bg-cyan-900/40 data-[state=active]:text-cyan-400">1M</TabsTrigger>
-                <TabsTrigger value="quarter" className="rounded-none font-mono text-xs uppercase tracking-wider data-[state=active]:bg-cyan-900/40 data-[state=active]:text-cyan-400">3M</TabsTrigger>
+              <TabsList className="grid h-12 w-full grid-cols-4 border border-slate-700 bg-slate-950/90 p-1 text-slate-300">
+                <TabsTrigger value="today" className="rounded-none font-mono text-xs uppercase tracking-wider text-slate-400 hover:text-white data-[state=active]:bg-white data-[state=active]:text-slate-950">1D</TabsTrigger>
+                <TabsTrigger value="week" className="rounded-none font-mono text-xs uppercase tracking-wider text-slate-400 hover:text-white data-[state=active]:bg-white data-[state=active]:text-slate-950">7D</TabsTrigger>
+                <TabsTrigger value="month" className="rounded-none font-mono text-xs uppercase tracking-wider text-slate-400 hover:text-white data-[state=active]:bg-white data-[state=active]:text-slate-950">1M</TabsTrigger>
+                <TabsTrigger value="quarter" className="rounded-none font-mono text-xs uppercase tracking-wider text-slate-400 hover:text-white data-[state=active]:bg-white data-[state=active]:text-slate-950">3M</TabsTrigger>
               </TabsList>
             </Tabs>
 
@@ -120,7 +120,7 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
                 isAgro ? "Поля, урожайность и погодный риск читаются как seasonal board." : isManufacturing ? "Линии, downtime и загрузка читаются как industrial board." : "Все разделы доступны из sidebar без пустых якорей.",
                 isAgro ? "Dark-theme сохраняет спокойный характер полевого мониторинга." : isManufacturing ? "Dark-theme держит техничный характер без лишнего sci-fi шума." : "Dark-theme сохранила характер, но стала легче для чтения."
               ].map((item) => (
-                <div key={item} className="border border-slate-800 bg-slate-950/60 px-4 py-3 text-sm leading-6 text-slate-400">
+                <div key={item} className="border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm leading-6 text-slate-300">
                   {item}
                 </div>
               ))}

@@ -108,11 +108,11 @@ function getHeroSurface(design: { heroTone: string; primary: string }) {
 
   if (design.heroTone === "service") {
     return {
-      background: "linear-gradient(135deg, rgba(76,29,29,0.95) 0%, rgba(136,19,55,0.88) 40%, rgba(15,23,42,0.96) 100%)",
+      background: "linear-gradient(135deg, rgba(28,25,23,0.98) 0%, rgba(67,20,7,0.9) 38%, rgba(120,53,15,0.7) 62%, rgba(15,23,42,0.96) 100%)",
       borderTop: `3px solid ${design.primary}`,
       textClass: "text-white",
-      subtitleClass: "text-rose-100/80",
-      panelClass: "border-rose-300/15 bg-white/10 text-white"
+      subtitleClass: "text-orange-50/82",
+      panelClass: "border-orange-300/15 bg-black/18 text-white"
     };
   }
 
