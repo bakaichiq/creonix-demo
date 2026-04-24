@@ -54,6 +54,26 @@ npm start
 
 Откройте [http://localhost:3001](http://localhost:3001).
 
+## Деплой в DigitalOcean
+
+Проект подготовлен для **DigitalOcean App Platform**.
+
+- App spec: [.do/app.yaml](/Users/baqaiimanqul/Desktop/creonix/.do/app.yaml)
+- Deploy template для кнопки: [.do/deploy.template.yaml](/Users/baqaiimanqul/Desktop/creonix/.do/deploy.template.yaml)
+
+### Через панель DigitalOcean
+
+1. Откройте `Create App` в App Platform.
+2. Подключите GitHub-репозиторий `bakaichiq/creonix-demo`.
+3. Выберите ветку `main`.
+4. Убедитесь, что сервис собирается через `Dockerfile`.
+5. Проверьте порт `3000` и путь health check `/`.
+6. Запустите deploy.
+
+### Через кнопку Deploy to DigitalOcean
+
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/bakaichiq/creonix-demo/tree/main)
+
 ## Структура проекта
 
 ```

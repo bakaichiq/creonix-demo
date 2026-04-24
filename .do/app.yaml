@@ -1,0 +1,27 @@
+name: creonix-demo
+region: fra
+services:
+  - name: web
+    github:
+      repo: bakaichiq/creonix-demo
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    dockerfile_path: Dockerfile
+    http_port: 3000
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    health_check:
+      http_path: /
+      initial_delay_seconds: 15
+      period_seconds: 10
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 6
+    envs:
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+        scope: RUN_AND_BUILD_TIME
+      - key: HOSTNAME
+        value: "0.0.0.0"
+        scope: RUN_TIME
