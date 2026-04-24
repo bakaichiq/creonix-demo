@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: creonix-demo-frontend
+    ports:
+      - "3002:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:8000
+      NEXT_TELEMETRY_DISABLED: "1"
+    networks:
+      - creonix
+    restart: unless-stopped
+
+networks:
+  creonix:
+    name: creonix-network
