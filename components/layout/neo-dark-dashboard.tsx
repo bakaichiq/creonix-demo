@@ -65,15 +65,15 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
 
       <div className="grid gap-4 xl:grid-cols-[1.15fr,0.85fr]">
         <Card variant="dark" className="border border-slate-800 bg-slate-900/90 p-0 text-slate-200 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-          <CardContent className="grid gap-6 p-6 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-            <div className="flex items-start gap-4">
+          <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1.15fr),minmax(320px,0.85fr)] lg:items-center">
+            <div className="flex min-w-0 items-start gap-4">
               <Activity className="mt-1 h-8 w-8 animate-pulse text-cyan-400" />
-              <div>
+              <div className="min-w-0">
                 <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan-500/70">
                   {business.design.designSystemName} // В СЕТИ
                 </div>
-                <h2 className={cn("mt-2 font-display text-3xl text-white sm:text-4xl", business.design.headingClass)}>{business.name}</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
+                <h2 className={cn("break-anywhere mt-2 font-display text-3xl text-white sm:text-4xl", business.design.headingClass)}>{business.name}</h2>
+                <p className="break-anywhere mt-3 max-w-2xl text-sm leading-7 text-slate-300">
                   {isAgro
                     ? "Темная тема для агро стала field-operations console: сезон, поля, техника и прогноз поданы как спокойный ночной мониторинг."
                     : isManufacturing
@@ -83,15 +83,15 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="grid min-w-0 gap-3 grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {[
                 { label: "ПЕРИОД", value: getTimeframeLabel(timeframe).toUpperCase() },
                 { label: "РИСК", value: `${criticalRisks}` },
                 { label: "ИИ", value: "ОНЛАЙН" }
               ].map((item) => (
-                <div key={item.label} className="border border-slate-700 bg-slate-950/80 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">{item.label}</div>
-                  <div className="mt-2 text-lg font-semibold text-white">{item.value}</div>
+                <div key={item.label} className="min-w-0 overflow-hidden border border-slate-700 bg-slate-950/80 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]">
+                  <div className="break-anywhere font-mono text-[10px] uppercase tracking-[0.18em] text-slate-400">{item.label}</div>
+                  <div className="break-anywhere mt-2 text-lg font-semibold text-white">{item.value}</div>
                 </div>
               ))}
             </div>
@@ -235,10 +235,10 @@ export function NeoDarkDashboard({ slug, business, initialDemo }: NeoDarkDashboa
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 {demo.sales.summary.map((item: any) => (
                   <div key={item.label} className={dataPanelClass}>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">{item.label}</div>
-                    <div className="mt-2 flex items-center justify-between gap-2">
-                      <div className="font-display text-lg text-white">{item.value}</div>
-                      <Badge className={cn("rounded-none", getTrendClasses(item.tone))}>{item.tone.toUpperCase()}</Badge>
+                    <div className="break-anywhere font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">{item.label}</div>
+                    <div className="mt-2 flex min-w-0 flex-col items-start gap-2">
+                      <div className="break-anywhere font-display text-lg text-white">{item.value}</div>
+                      <Badge className={cn("max-w-full whitespace-normal rounded-none", getTrendClasses(item.tone))}>{item.tone.toUpperCase()}</Badge>
                     </div>
                   </div>
                 ))}

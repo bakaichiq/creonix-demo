@@ -43,7 +43,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isBoutique && "rounded-[8px] border-stone-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,244,240,0.94))]",
     isGrocery && "border-emerald-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,253,244,0.92))]",
     isSewing && "border-fuchsia-100 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(253,242,248,0.94))]",
-    isBakery && "border-amber-100 bg-[linear-gradient(180deg,rgba(255,251,235,0.98),rgba(255,255,255,0.92))]",
+    isBakery && "border-[#e8c9a4] bg-[linear-gradient(180deg,rgba(255,251,243,0.98),rgba(250,239,221,0.94))] shadow-[0_24px_80px_-48px_rgba(124,45,18,0.18)]",
     isRestaurant && "border-orange-900/35 bg-[linear-gradient(180deg,rgba(24,24,27,0.94),rgba(41,37,36,0.94))] text-white shadow-[0_24px_80px_-40px_rgba(120,53,15,0.38)]"
   );
   const boutiquePanelClass = cn(
@@ -51,7 +51,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isBoutique && "rounded-[6px] border-stone-200 bg-stone-50",
     isGrocery && "border-emerald-100 bg-emerald-50/70",
     isSewing && "border-fuchsia-100 bg-fuchsia-50/70",
-    isBakery && "border-amber-100 bg-amber-50/70",
+    isBakery && "border-[#e8c9a4] bg-[#fff5e8]",
     isRestaurant && "border-orange-900/30 bg-orange-950/30"
   );
   const boutiqueMutedPanelClass = cn(
@@ -59,7 +59,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isBoutique && "rounded-[6px] border-stone-200 bg-stone-50",
     isGrocery && "border-emerald-100 bg-emerald-50/70",
     isSewing && "border-fuchsia-100 bg-fuchsia-50/70",
-    isBakery && "border-amber-100 bg-amber-50/70",
+    isBakery && "border-[#e8c9a4] bg-[#fff5e8]",
     isRestaurant && "border-orange-900/30 bg-orange-950/30"
   );
   const boutiqueBadgeClass = cn(
@@ -67,7 +67,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     isBoutique ? "border border-stone-300 bg-white text-stone-700" :
     isGrocery ? "bg-emerald-600 text-white" :
     isSewing ? "bg-fuchsia-700 text-white" :
-    isBakery ? "bg-amber-700 text-white" :
+    isBakery ? "bg-[#9a3412] text-[#fff7ed]" :
     isRestaurant ? "bg-orange-600 text-white" :
     "bg-slate-950 text-white"
   );
@@ -75,22 +75,38 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
     "text-3xl",
     isBoutique && "font-light tracking-[0.04em]",
     isSewing && "italic",
-    isBakery && "font-semibold text-amber-950",
+    isBakery && "font-semibold text-[#4a2f1d]",
     isRestaurant && "text-white"
   );
-  const serviceLabelClass = cn(isDarkGlass ? "text-orange-100/55" : isBoutique ? "text-stone-400" : "text-slate-400");
-  const serviceHeadingClass = cn(isDarkGlass ? "text-white" : isBoutique ? "font-light tracking-[0.04em]" : "font-semibold", !isDarkGlass && "text-slate-950");
-  const serviceBodyClass = cn(isDarkGlass ? "text-slate-300" : isBoutique ? "text-stone-600" : "text-slate-600");
+  const serviceLabelClass = cn(
+    isDarkGlass ? "text-orange-100/55" :
+    isBoutique ? "text-stone-400" :
+    isBakery ? "text-[#b45309]" :
+    "text-slate-400"
+  );
+  const serviceHeadingClass = cn(
+    isDarkGlass ? "text-white" : isBoutique ? "font-light tracking-[0.04em]" : "font-semibold",
+    isBakery ? "text-[#4a2f1d]" : !isDarkGlass && "text-slate-950"
+  );
+  const serviceBodyClass = cn(
+    isDarkGlass ? "text-slate-300" :
+    isBoutique ? "text-stone-600" :
+    isBakery ? "text-[#7c5a3b]" :
+    "text-slate-600"
+  );
   const servicePanelClass = cn(
     isDarkGlass
       ? "rounded-[18px] border border-orange-200/10 bg-black/16 px-4 py-3 text-sm leading-6 text-stone-100"
       : isBoutique
         ? "rounded-[6px] border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-7 text-stone-600"
+        : isBakery
+          ? "rounded-[18px] border border-[#e8c9a4] bg-[#fff5e8] px-4 py-3 text-sm leading-6 text-[#6b4c32]"
         : "rounded-[18px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600"
   );
   const serviceStatsCardClass = cn(
     isDarkGlass ? "rounded-[18px] border border-orange-200/10 bg-black/16 p-4" :
     isBoutique ? "rounded-[6px] border border-stone-200 bg-white px-5 py-4" :
+    isBakery ? "rounded-[18px] border border-[#e8c9a4] bg-[#fff6ea] p-4" :
     "rounded-[20px] border border-slate-200 bg-slate-50 p-4"
   );
 
@@ -111,16 +127,18 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
         <Card className={cn(
           isBoutique
             ? "rounded-[8px] border-stone-200 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(246,242,237,0.95))]"
+            : isBakery
+              ? "border-[#e8c9a4] bg-[linear-gradient(180deg,rgba(255,250,243,0.98),rgba(249,239,220,0.95))]"
             : "border-white/70 bg-white/80"
         )}>
-          <CardContent className={cn("grid gap-5 p-5 lg:grid-cols-[1.1fr,0.9fr] lg:items-end", isBoutique && "gap-8 p-8")}>
-            <div className="space-y-4">
+          <CardContent className={cn("grid gap-5 p-5 lg:grid-cols-[minmax(0,1.15fr),minmax(320px,0.85fr)] lg:items-end", isBoutique && "gap-8 p-8")}>
+            <div className="min-w-0 space-y-4">
               <Badge className={cn("w-fit rounded-full", business.palette.badge)}>{business.design.designSystemName}</Badge>
               <div className="space-y-3">
-                <h2 className={cn("font-display text-3xl text-slate-950", business.design.headingClass, isBoutique && "text-[2.25rem] leading-[1.05]")}>
+                <h2 className={cn("break-anywhere font-display text-3xl text-slate-950", business.design.headingClass, isBoutique && "text-[2.25rem] leading-[1.05]")}>
                   {business.shortName}: первый экран с KPI, рисками и действием
                 </h2>
-                <p className={cn("max-w-2xl text-sm leading-7 text-slate-600", isBoutique && "max-w-xl text-[15px] leading-8 text-stone-600")}>
+                <p className={cn("break-anywhere max-w-2xl text-sm leading-7 text-slate-600", isBoutique && "max-w-xl text-[15px] leading-8 text-stone-600", isBakery && "text-[#6b4c32]")}>
                   {isBoutique
                     ? "Бутик читает интерфейс не как складской дашборд, а как editorial control room: коллекции, размеры, возвраты и клиенты живут в более воздушной и премиальной подаче."
                     : isGrocery
@@ -136,15 +154,15 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="grid min-w-0 gap-3 grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 {[
                   { label: "Период", value: getTimeframeLabel(timeframe) },
                   { label: "Критичные зоны", value: `${criticalRisks}` },
                   { label: "AI статус", value: "Активен" }
                 ].map((item) => (
-                <div key={item.label} className={serviceStatsCardClass}>
-                  <div className={cn("text-[11px] uppercase tracking-[0.16em]", serviceLabelClass)}>{item.label}</div>
-                  <div className={cn("mt-2 font-display text-xl", isDarkGlass ? "font-semibold text-white" : "text-slate-950", isBoutique && "font-light tracking-[0.05em]")}>{item.value}</div>
+                <div key={item.label} className={cn(serviceStatsCardClass, "min-w-0 overflow-hidden")}>
+                  <div className={cn("break-anywhere text-[11px] uppercase tracking-[0.16em]", serviceLabelClass)}>{item.label}</div>
+                  <div className={cn("break-anywhere mt-2 font-display text-xl", isDarkGlass ? "font-semibold text-white" : isBakery ? "text-[#4a2f1d]" : "text-slate-950", isBoutique && "font-light tracking-[0.05em]")}>{item.value}</div>
                 </div>
               ))}
             </div>
@@ -152,7 +170,7 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
         </Card>
 
         <div className="space-y-4">
-          <Card className={cn(isBoutique ? "rounded-[8px] border-stone-200 bg-white" : "border-white/70 bg-white/80")}>
+          <Card className={cn(isBoutique ? "rounded-[8px] border-stone-200 bg-white" : isBakery ? "border-[#e8c9a4] bg-[#fffaf3]" : "border-white/70 bg-white/80")}>
             <CardContent className="space-y-4 p-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
@@ -161,11 +179,11 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
                   </div>
                   <div className={cn("mt-2 text-lg", serviceHeadingClass)}>Сценарий для собственника</div>
                 </div>
-                <div className={cn("hidden text-xs font-semibold sm:block", isDarkGlass ? "text-slate-400" : "text-slate-500")}>Первые 15 секунд чтения</div>
+                <div className={cn("hidden text-xs font-semibold sm:block", isDarkGlass ? "text-slate-400" : isBakery ? "text-[#9a3412]" : "text-slate-500")}>Первые 15 секунд чтения</div>
               </div>
 
               <Tabs value={timeframe} onValueChange={(v) => setTimeframe(v as Timeframe)} className="w-full">
-                <TabsList className={cn("grid w-full grid-cols-4 p-1", isDarkGlass ? "rounded-2xl border border-white/10 bg-white/10 text-slate-300" : "bg-slate-100", isBoutique ? "rounded-[8px]" : "rounded-2xl")}>
+                <TabsList className={cn("grid w-full grid-cols-4 p-1", isDarkGlass ? "rounded-2xl border border-white/10 bg-white/10 text-slate-300" : isBakery ? "bg-[#f8e7cf]" : "bg-slate-100", isBoutique ? "rounded-[8px]" : "rounded-2xl")}>
                   <TabsTrigger value="today" className={cn(isBoutique ? "rounded-[6px]" : "rounded-xl", isDarkGlass && "text-slate-300 data-[state=active]:bg-white data-[state=active]:text-slate-950")}>Сегодня</TabsTrigger>
                   <TabsTrigger value="week" className={cn(isBoutique ? "rounded-[6px]" : "rounded-xl", isDarkGlass && "text-slate-300 data-[state=active]:bg-white data-[state=active]:text-slate-950")}>Неделя</TabsTrigger>
                   <TabsTrigger value="month" className={cn(isBoutique ? "rounded-[6px]" : "rounded-xl", isDarkGlass && "text-slate-300 data-[state=active]:bg-white data-[state=active]:text-slate-950")}>Месяц</TabsTrigger>
@@ -359,10 +377,10 @@ export function GlassDashboard({ slug, business, initialDemo }: GlassDashboardPr
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 {demo.sales.summary.map((item: any) => (
                   <div key={item.label} className={boutiquePanelClass}>
-                    <div className="text-sm text-slate-500">{item.label}</div>
-                    <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-                      <div className="max-w-full break-words font-display text-xl font-semibold text-slate-950">{item.value}</div>
-                      <Badge className={cn("rounded-full shrink-0", getTrendClasses(item.tone))}>
+                    <div className="break-anywhere text-sm text-slate-500">{item.label}</div>
+                    <div className="mt-2 flex min-w-0 flex-col items-start gap-2">
+                      <div className="break-anywhere max-w-full font-display text-xl font-semibold text-slate-950">{item.value}</div>
+                      <Badge className={cn("max-w-full rounded-full whitespace-normal", getTrendClasses(item.tone))}>
                         {item.tone === "up" ? "Рост" : item.tone === "down" ? "Риск" : "Контроль"}
                       </Badge>
                     </div>

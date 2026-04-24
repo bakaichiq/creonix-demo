@@ -238,7 +238,7 @@ export function Sidebar({ business, items }: SidebarProps) {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="sticky top-6 hidden h-fit lg:block">
+      <aside className="sticky top-6 hidden h-fit overflow-hidden rounded-[var(--panel-radius)] shadow-soft lg:block">
         <SidebarContent business={business} items={items} activeId={activeId} />
       </aside>
     </>

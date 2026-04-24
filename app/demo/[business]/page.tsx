@@ -98,11 +98,11 @@ function getHeroSurface(design: { heroTone: string; primary: string }) {
 
   if (design.heroTone === "warm") {
     return {
-      background: "linear-gradient(135deg, rgba(255,247,237,0.95) 0%, rgba(253,230,138,0.38) 36%, rgba(146,64,14,0.92) 100%)",
+      background: "linear-gradient(135deg, rgba(255,250,241,0.98) 0%, rgba(249,239,220,0.96) 36%, rgba(194,65,12,0.26) 68%, rgba(120,53,15,0.9) 100%)",
       borderTop: `3px solid ${design.primary}`,
-      textClass: "text-white",
-      subtitleClass: "text-amber-50/80",
-      panelClass: "border-amber-200/30 bg-amber-50/10 text-white"
+      textClass: "text-[#4a2f1d]",
+      subtitleClass: "text-[#6b3f1f]/78",
+      panelClass: "border-[#e8c9a4] bg-[#fff8ef]/72 text-[#4a2f1d]"
     };
   }
 
@@ -120,9 +120,9 @@ function getHeroSurface(design: { heroTone: string; primary: string }) {
     return {
       background: "linear-gradient(135deg, rgba(250,245,255,0.94) 0%, rgba(244,114,182,0.16) 34%, rgba(136,19,55,0.92) 100%)",
       borderTop: `3px solid ${design.primary}`,
-      textClass: "text-white",
-      subtitleClass: "text-fuchsia-50/82",
-      panelClass: "border-fuchsia-200/20 bg-white/10 text-white"
+      textClass: "text-fuchsia-950",
+      subtitleClass: "text-fuchsia-950/72",
+      panelClass: "border-fuchsia-200/70 bg-white/55 text-fuchsia-950"
     };
   }
 
@@ -130,9 +130,9 @@ function getHeroSurface(design: { heroTone: string; primary: string }) {
     return {
       background: "linear-gradient(135deg, rgba(236,253,245,0.98) 0%, rgba(132,204,22,0.14) 36%, rgba(6,78,59,0.94) 100%)",
       borderTop: `3px solid ${design.primary}`,
-      textClass: "text-white",
-      subtitleClass: "text-emerald-50/82",
-      panelClass: "border-emerald-200/25 bg-white/10 text-white"
+      textClass: "text-emerald-950",
+      subtitleClass: "text-emerald-950/72",
+      panelClass: "border-emerald-200/70 bg-white/55 text-emerald-950"
     };
   }
 
@@ -211,10 +211,7 @@ export default function DemoBusinessPage({ params }: DemoPageProps) {
   const isDarkHero =
     business.design.heroTone === "dispatch" ||
     business.design.heroTone === "field" ||
-    business.design.heroTone === "warm" ||
     business.design.heroTone === "service" ||
-    business.design.heroTone === "atelier" ||
-    business.design.heroTone === "fresh" ||
     business.design.heroTone === "industrial" ||
     business.design.heroTone === "commerce";
   const heroNotificationCardClass = cn(

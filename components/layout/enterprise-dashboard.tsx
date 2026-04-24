@@ -105,11 +105,11 @@ export function EnterpriseDashboard({ slug, business, initialDemo }: EnterpriseD
                 ? "bg-[linear-gradient(90deg,#06b6d4_0%,#38bdf8_38%,#f97316_100%)]"
                 : "bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-300"
           )} />
-          <CardContent className="grid gap-6 p-6 lg:grid-cols-[1.1fr,0.9fr] lg:items-end">
-            <div className="space-y-3">
+          <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1.15fr),minmax(320px,0.85fr)] lg:items-end">
+            <div className="min-w-0 space-y-3">
               <div className={cn("text-[11px] uppercase font-semibold tracking-[0.22em]", isLogistics ? "text-cyan-400/70" : "text-slate-400")}>{business.design.designSystemName}</div>
-              <h2 className={cn("font-display text-3xl", isLogistics ? "text-white" : "text-slate-950", business.design.headingClass)}>{business.name}</h2>
-              <p className={cn("max-w-2xl text-sm leading-7", isLogistics ? "text-slate-300" : "text-slate-600")}>
+              <h2 className={cn("break-anywhere font-display text-3xl", isLogistics ? "text-white" : "text-slate-950", business.design.headingClass)}>{business.name}</h2>
+              <p className={cn("break-anywhere max-w-2xl text-sm leading-7", isLogistics ? "text-slate-300" : "text-slate-600")}>
                 {isConstruction
                   ? "Структура экрана собрана как project board: объект, риск, деньги и исполнение графика читаются сразу."
                   : isLogistics
@@ -121,7 +121,7 @@ export function EnterpriseDashboard({ slug, business, initialDemo }: EnterpriseD
             </div>
 
             <div className={cn(
-              "grid gap-3 p-4",
+              "grid min-w-0 gap-3 p-4",
               isConstruction ? "rounded-sm border border-slate-300 bg-slate-50" :
               isLogistics ? "rounded-[18px] border border-cyan-500/20 bg-cyan-500/10" :
               "rounded-[20px] border border-slate-200 bg-slate-50"
@@ -140,7 +140,7 @@ export function EnterpriseDashboard({ slug, business, initialDemo }: EnterpriseD
                   {isConstruction ? "Режим доски" : isLogistics ? "Диспетчер онлайн" : isDistribution ? "Контроль выручки" : "Режим доски"}
                 </Badge>
               </div>
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <div className="grid min-w-0 gap-3 grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 {[
                   { label: "Период", value: getTimeframeLabel(timeframe) },
                   { label: isLogistics ? "SLA риск" : "Критично", value: `${criticalRisks} ${isLogistics ? "рейса" : "зоны"}` },
@@ -149,14 +149,14 @@ export function EnterpriseDashboard({ slug, business, initialDemo }: EnterpriseD
                   <div
                     key={item.label}
                     className={cn(
-                      "px-4 py-3",
+                      "min-w-0 overflow-hidden px-4 py-3",
                       isConstruction ? "rounded-sm border border-slate-300 bg-white" :
                       isLogistics ? "rounded-[12px] border border-white/10 bg-slate-950/40" :
                       "rounded-[16px] border border-slate-200 bg-white"
                     )}
                   >
-                    <div className={cn("text-[11px] uppercase tracking-[0.16em]", isLogistics ? "text-slate-500" : "text-slate-400")}>{item.label}</div>
-                    <div className={cn("mt-2 text-sm font-semibold", isLogistics ? "text-white" : "text-slate-900")}>{item.value}</div>
+                    <div className={cn("break-anywhere text-[11px] uppercase tracking-[0.16em]", isLogistics ? "text-slate-500" : "text-slate-400")}>{item.label}</div>
+                    <div className={cn("break-anywhere mt-2 text-sm font-semibold", isLogistics ? "text-white" : "text-slate-900")}>{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -391,10 +391,10 @@ export function EnterpriseDashboard({ slug, business, initialDemo }: EnterpriseD
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 {demo.sales.summary.map((item: any) => (
                   <div key={item.label} className={sectionPanelClass}>
-                    <div className="text-sm text-slate-500">{item.label}</div>
-                    <div className="mt-2 flex items-center justify-between gap-2">
-                      <div className="font-display text-xl font-semibold text-slate-950">{item.value}</div>
-                      <Badge className={cn(isConstruction ? "rounded-sm" : isLogistics ? "rounded-[10px]" : "rounded-full", getTrendClasses(item.tone))}>{item.tone === "down" ? "Риск" : item.tone === "up" ? "Рост" : "Контроль"}</Badge>
+                    <div className="break-anywhere text-sm text-slate-500">{item.label}</div>
+                    <div className="mt-2 flex min-w-0 flex-col items-start gap-2">
+                      <div className="break-anywhere font-display text-xl font-semibold text-slate-950">{item.value}</div>
+                      <Badge className={cn("max-w-full whitespace-normal", isConstruction ? "rounded-sm" : isLogistics ? "rounded-[10px]" : "rounded-full", getTrendClasses(item.tone))}>{item.tone === "down" ? "Риск" : item.tone === "up" ? "Рост" : "Контроль"}</Badge>
                     </div>
                   </div>
                 ))}

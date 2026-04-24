@@ -22,8 +22,8 @@ function getStatusVariant(status: string) {
 
 export function CrmTable({ rows }: CrmTableProps) {
   return (
-    <TableShell minWidthClass="min-w-[920px]">
-      <TableHeader className="grid grid-cols-[1.35fr,1fr,0.9fr,0.9fr,1fr] gap-4">
+    <TableShell minWidthClass="min-w-[1020px]">
+      <TableHeader className="grid grid-cols-[minmax(150px,1.3fr)_minmax(140px,1fr)_minmax(120px,0.85fr)_minmax(120px,0.85fr)_minmax(160px,1fr)] gap-3">
           <div className="min-w-0">Клиент</div>
           <div className="min-w-0">Сделка</div>
           <div className="min-w-0">Менеджер</div>
@@ -34,7 +34,7 @@ export function CrmTable({ rows }: CrmTableProps) {
           {rows.map((row) => (
             <TableRow
               key={`${row.company}-${row.contact}`}
-              className="grid cursor-default grid-cols-[1.35fr,1fr,0.9fr,0.9fr,1fr] gap-4"
+              className="grid cursor-default grid-cols-[minmax(150px,1.3fr)_minmax(140px,1fr)_minmax(120px,0.85fr)_minmax(120px,0.85fr)_minmax(160px,1fr)] gap-3"
             >
               <div className="min-w-0">
                 <div className="break-anywhere font-medium text-slate-900">{row.company}</div>

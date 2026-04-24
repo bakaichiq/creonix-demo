@@ -22,8 +22,8 @@ function getAlertVariant(alert: string) {
 
 export function InventoryTable({ rows }: InventoryTableProps) {
   return (
-    <TableShell minWidthClass="min-w-[860px]">
-      <TableHeader className="grid grid-cols-[1.4fr,0.8fr,0.8fr,0.8fr,0.8fr] gap-4">
+    <TableShell minWidthClass="min-w-[980px]">
+      <TableHeader className="grid grid-cols-[minmax(180px,1.45fr)_minmax(100px,0.8fr)_minmax(100px,0.8fr)_minmax(120px,0.9fr)_minmax(130px,0.85fr)] gap-3">
           <div className="min-w-0">Позиция</div>
           <div className="min-w-0">Остаток</div>
           <div className="min-w-0">Резерв</div>
@@ -34,7 +34,7 @@ export function InventoryTable({ rows }: InventoryTableProps) {
           {rows.map((row) => (
             <TableRow
               key={row.sku}
-              className="grid cursor-default grid-cols-[1.4fr,0.8fr,0.8fr,0.8fr,0.8fr] gap-4"
+              className="grid cursor-default grid-cols-[minmax(180px,1.45fr)_minmax(100px,0.8fr)_minmax(100px,0.8fr)_minmax(120px,0.9fr)_minmax(130px,0.85fr)] gap-3"
             >
               <div className="min-w-0">
                 <div className="break-anywhere font-medium text-slate-900">{row.name}</div>

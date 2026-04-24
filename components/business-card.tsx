@@ -28,7 +28,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
   const isRestaurant = business.slug === "restaurant";
   const isManufacturing = business.slug === "manufacturing";
   const isDistribution = business.slug === "distribution";
-  const isDarkCard = isLogistics || isManufacturing;
+  const isDarkCard = false;
 
   return (
     <motion.div
@@ -82,10 +82,10 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
             <Badge className={cn(
               "max-w-[65%] shrink-0 break-anywhere whitespace-normal text-right",
               business.palette.badge,
-              isLogistics && "bg-cyan-500/10 text-cyan-200",
+              isLogistics && "bg-cyan-100 text-cyan-700",
               isBoutique && "rounded-[6px] bg-stone-100 text-stone-700",
               isAgro && "bg-emerald-100 text-emerald-700",
-              isManufacturing && "bg-sky-500/10 text-sky-200",
+              isManufacturing && "bg-sky-100 text-sky-700",
               isDistribution && "bg-indigo-100 text-indigo-700"
             )}>
               {business.demoMetric}
@@ -96,9 +96,9 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
             <h3 className={cn(
               "break-anywhere font-display text-2xl transition-colors",
               isBoutique ? "font-light tracking-[0.06em] text-stone-900 group-hover:text-stone-700" :
-              isLogistics ? "font-semibold text-white group-hover:text-cyan-100" :
+              isLogistics ? "font-semibold text-slate-950 group-hover:text-cyan-800" :
               isAgro ? "font-semibold text-emerald-950 group-hover:text-emerald-800" :
-              isManufacturing ? "font-semibold uppercase tracking-[0.04em] text-white group-hover:text-sky-100" :
+              isManufacturing ? "font-semibold uppercase tracking-[0.04em] text-slate-950 group-hover:text-sky-800" :
               isSewing ? "italic text-fuchsia-950 group-hover:text-fuchsia-800" :
               isBakery ? "font-semibold text-amber-950 group-hover:text-amber-800" :
               isRestaurant ? "font-semibold text-orange-950 group-hover:text-orange-800" :
@@ -107,11 +107,11 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
             )}>
               {business.name}
             </h3>
-            <p className={cn("break-anywhere text-sm leading-6", isDarkCard ? "text-slate-300" : isAgro ? "text-slate-600" : "text-slate-600")}>{business.description}</p>
+            <p className={cn("break-anywhere text-sm leading-6", isLogistics ? "text-slate-600" : isManufacturing ? "text-slate-600" : isAgro ? "text-slate-600" : "text-slate-600")}>{business.description}</p>
           </div>
 
           <div className="space-y-3">
-            <div className={cn("text-xs uppercase tracking-[0.16em]", isBoutique ? "font-medium text-stone-400" : isDarkCard ? "font-medium text-slate-500" : isAgro ? "font-semibold text-emerald-700" : "font-semibold text-slate-400")}>
+            <div className={cn("text-xs uppercase tracking-[0.16em]", isBoutique ? "font-medium text-stone-400" : isLogistics ? "font-medium text-slate-500" : isManufacturing ? "font-medium text-slate-500" : isAgro ? "font-semibold text-emerald-700" : "font-semibold text-slate-400")}>
               Боли бизнеса
             </div>
             <div className="flex flex-wrap gap-2">
@@ -142,7 +142,7 @@ export function BusinessCard({ business, index }: BusinessCardProps) {
           <div className="mt-auto space-y-3">
             <div className="grid gap-2">
               {business.outcomes.slice(0, 2).map((item) => (
-                <div key={item} className={cn("flex items-center gap-2 text-sm", isDarkCard ? "text-slate-300" : isAgro ? "text-slate-700" : "text-slate-600")}>
+                <div key={item} className={cn("flex items-center gap-2 text-sm", isLogistics ? "text-slate-600" : isManufacturing ? "text-slate-600" : isAgro ? "text-slate-700" : "text-slate-600")}>
                   <CheckCircle2 className={cn("h-4 w-4 shrink-0", isLogistics ? "text-cyan-400" : isAgro ? "text-emerald-600" : isManufacturing ? "text-sky-400" : "text-emerald-500")} />
                   <span className="break-anywhere">{item}</span>
                 </div>

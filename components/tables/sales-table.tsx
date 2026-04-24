@@ -22,8 +22,8 @@ function getStatusVariant(status: string) {
 
 export function SalesTable({ rows }: SalesTableProps) {
   return (
-    <TableShell minWidthClass="min-w-[920px]">
-      <TableHeader className="grid grid-cols-[0.9fr,1.2fr,0.9fr,0.7fr,0.8fr,0.8fr] gap-4">
+    <TableShell minWidthClass="min-w-[1040px]">
+      <TableHeader className="grid grid-cols-[minmax(120px,0.95fr)_minmax(140px,1.15fr)_minmax(120px,0.9fr)_minmax(90px,0.7fr)_minmax(120px,0.85fr)_minmax(120px,0.9fr)] gap-3">
           <div className="min-w-0">Заказ</div>
           <div className="min-w-0">Клиент</div>
           <div className="min-w-0">Сумма</div>
@@ -35,7 +35,7 @@ export function SalesTable({ rows }: SalesTableProps) {
           {rows.map((row) => (
             <TableRow
               key={row.number}
-              className="grid cursor-default grid-cols-[0.9fr,1.2fr,0.9fr,0.7fr,0.8fr,0.8fr] gap-4"
+              className="grid cursor-default grid-cols-[minmax(120px,0.95fr)_minmax(140px,1.15fr)_minmax(120px,0.9fr)_minmax(90px,0.7fr)_minmax(120px,0.85fr)_minmax(120px,0.9fr)] gap-3"
             >
               <div className="min-w-0">
                 <div className="break-anywhere font-medium text-slate-900">{row.number}</div>

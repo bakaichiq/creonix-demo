@@ -31,8 +31,8 @@ export function OperationsTable({ rows, mode = "log" }: OperationsTableProps) {
     const items = rows as OperationItem[];
 
     return (
-      <TableShell minWidthClass="min-w-[760px]">
-          <TableHeader className="grid grid-cols-[1.6fr,1fr,1fr,0.8fr] gap-4">
+      <TableShell minWidthClass="min-w-[920px]">
+          <TableHeader className="grid grid-cols-[minmax(180px,1.55fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(110px,0.85fr)] gap-3">
             <div className="min-w-0">Операция</div>
             <div className="min-w-0">Статус</div>
             <div className="min-w-0">Срок</div>
@@ -40,7 +40,7 @@ export function OperationsTable({ rows, mode = "log" }: OperationsTableProps) {
           </TableHeader>
           <div className="divide-y divide-slate-100">
             {items.map((item) => (
-              <TableRow key={`${item.item}-${item.stage}`} className="grid grid-cols-[1.6fr,1fr,1fr,0.8fr] gap-4">
+              <TableRow key={`${item.item}-${item.stage}`} className="grid grid-cols-[minmax(180px,1.55fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(110px,0.85fr)] gap-3">
                 <div className="min-w-0">
                   <div className="break-anywhere font-medium text-slate-900">{item.item}</div>
                   <div className="break-anywhere mt-1 text-slate-500">{item.stage}</div>
@@ -68,8 +68,8 @@ export function OperationsTable({ rows, mode = "log" }: OperationsTableProps) {
   const items = rows as OperationLogItem[];
 
   return (
-    <TableShell minWidthClass="min-w-[760px]">
-      <TableHeader className="grid grid-cols-[1.7fr,0.9fr,0.8fr,0.8fr] gap-4">
+    <TableShell minWidthClass="min-w-[920px]">
+      <TableHeader className="grid grid-cols-[minmax(200px,1.75fr)_minmax(120px,0.9fr)_minmax(120px,0.85fr)_minmax(130px,0.9fr)] gap-3">
           <div className="min-w-0">Операция</div>
           <div className="min-w-0">Ответственный</div>
           <div className="min-w-0">Сумма</div>
@@ -77,7 +77,7 @@ export function OperationsTable({ rows, mode = "log" }: OperationsTableProps) {
       </TableHeader>
         <div className="divide-y divide-slate-100">
           {items.map((item) => (
-            <TableRow key={item.id} className="grid grid-cols-[1.7fr,0.9fr,0.8fr,0.8fr] gap-4">
+            <TableRow key={item.id} className="grid grid-cols-[minmax(200px,1.75fr)_minmax(120px,0.9fr)_minmax(120px,0.85fr)_minmax(130px,0.9fr)] gap-3">
               <div className="min-w-0">
                 <div className="break-anywhere font-medium text-slate-900">{item.title}</div>
                 <div className="break-anywhere mt-1 text-slate-500">

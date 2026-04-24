@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { TrendingDown, TrendingUp } from "lucide-react";
 
 const products = [
-  { name: "Хлеб пшеничный", plan: 340, fact: 312, unit: "буханок", color: "#f59e0b" },
-  { name: "Круассаны", plan: 180, fact: 196, unit: "шт", color: "#f97316" },
-  { name: "Лаваш тонкий", plan: 220, fact: 198, unit: "шт", color: "#fb7185" },
-  { name: "Сдоба / булки", plan: 160, fact: 144, unit: "шт", color: "#fcd34d" },
+  { name: "Хлеб пшеничный", plan: 340, fact: 312, unit: "буханок", color: "#c2410c" },
+  { name: "Круассаны", plan: 180, fact: 196, unit: "шт", color: "#d97706" },
+  { name: "Лаваш тонкий", plan: 220, fact: 198, unit: "шт", color: "#92400e" },
+  { name: "Сдоба / булки", plan: 160, fact: 144, unit: "шт", color: "#b45309" },
 ];
 
 function ArcGauge({ value, color }: { value: number; color: string }) {
@@ -63,14 +63,14 @@ export function BakeryGauge() {
     <div>
       <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
         <div>
-          <p className="text-sm font-semibold text-slate-700">Выпуск за смену — план / факт</p>
-          <p className="mt-1 text-xs text-slate-500">Быстрый обзор по ключевым позициям текущей смены.</p>
+          <p className="text-sm font-semibold text-[#4a2f1d]">Выпуск за смену — план / факт</p>
+          <p className="mt-1 text-xs text-[#7c5a3b]">Быстрый обзор по ключевым позициям текущей смены.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-[10px]">
-          <span className="rounded-full bg-emerald-100 px-2 py-0.5 font-semibold text-emerald-700">
+          <span className="rounded-full bg-[#ecfdf5] px-2 py-0.5 font-semibold text-[#047857]">
             {overCount} в плане
           </span>
-          <span className="rounded-full bg-amber-100 px-2 py-0.5 font-semibold text-amber-700">
+          <span className="rounded-full bg-[#fff1dd] px-2 py-0.5 font-semibold text-[#9a3412]">
             {products.length - overCount} отстаёт
           </span>
         </div>
@@ -87,13 +87,13 @@ export function BakeryGauge() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               className={`flex flex-col items-center rounded-2xl border p-3 transition-colors ${
-                over ? "border-emerald-200 bg-emerald-50" : pct >= 85 ? "border-amber-100 bg-amber-50" : "border-red-100 bg-red-50"
+                over ? "border-emerald-200 bg-emerald-50" : pct >= 85 ? "border-[#e8c9a4] bg-[#fff5e8]" : "border-rose-200 bg-rose-50"
               }`}
             >
               <ArcGauge value={Math.min(pct, 100)} color={p.color} />
-              <p className="mt-1 text-center text-[11px] font-semibold text-slate-800 leading-tight">{p.name}</p>
-              <p className="mt-0.5 text-[10px] text-slate-500">{p.fact}/{p.plan} {p.unit}</p>
-              <div className={`mt-1 flex items-center gap-0.5 text-[10px] font-bold ${over ? "text-emerald-600" : "text-red-500"}`}>
+              <p className="mt-1 text-center text-[11px] font-semibold leading-tight text-[#4a2f1d]">{p.name}</p>
+              <p className="mt-0.5 text-[10px] text-[#7c5a3b]">{p.fact}/{p.plan} {p.unit}</p>
+              <div className={`mt-1 flex items-center gap-0.5 text-[10px] font-bold ${over ? "text-emerald-600" : "text-[#b91c1c]"}`}>
                 {over ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
                 {over ? `+${pct - 100}%` : `${pct - 100}%`}
               </div>
@@ -103,16 +103,16 @@ export function BakeryGauge() {
       </div>
 
       {/* Total summary */}
-      <div className="mt-3 flex items-center justify-between rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5">
+      <div className="mt-3 flex items-center justify-between rounded-xl border border-[#e8c9a4] bg-[#fff3e2] px-4 py-2.5">
         <div>
-          <p className="text-[11px] text-amber-700 font-medium">Итого смена</p>
-          <p className="text-xs text-amber-600">{totalFact} / {totalPlan} шт.</p>
+          <p className="text-[11px] font-medium text-[#9a3412]">Итого смена</p>
+          <p className="text-xs text-[#7c5a3b]">{totalFact} / {totalPlan} шт.</p>
         </div>
         <div className="text-right">
-          <p className={`text-xl font-black ${totalPct >= 100 ? "text-emerald-600" : totalPct >= 85 ? "text-amber-600" : "text-red-500"}`}>
+          <p className={`text-xl font-black ${totalPct >= 100 ? "text-emerald-600" : totalPct >= 85 ? "text-[#9a3412]" : "text-red-500"}`}>
             {totalPct}%
           </p>
-          <p className="text-[10px] text-amber-500">план-факт</p>
+          <p className="text-[10px] text-[#b45309]">план-факт</p>
         </div>
       </div>
     </div>
